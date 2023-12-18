@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace SharedConsoleApp.Services;
 
-internal class FileService : IFileService
+public class FileService : IFileService
 {   
 
       public bool SaveContentToFile(string filePath, string content)
@@ -13,6 +13,8 @@ internal class FileService : IFileService
         {
             using var sw = new StreamWriter(filePath);
             sw.WriteLine(content);
+            return true;
+           
         }
         catch (Exception ex) { Debug.WriteLine("FileService-saveFileToFile:: " + ex.Message); }
         return false;
@@ -23,6 +25,8 @@ internal class FileService : IFileService
 
         try
         {
+
+
             if (File.Exists(filePath))
             {
                 return File.ReadAllText(filePath);

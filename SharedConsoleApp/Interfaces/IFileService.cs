@@ -2,7 +2,7 @@
 
 namespace SharedConsoleApp.Interfaces;
 
-internal interface IFileService 
+public interface IFileService 
 {
 
     /// <summary>
