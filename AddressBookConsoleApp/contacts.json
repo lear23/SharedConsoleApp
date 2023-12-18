@@ -1,0 +1,11 @@
+[
+  {
+    "$type": "SharedConsoleApp.Models.PrivateContact, SharedConsoleApp",
+    "FirstName": "Israel",
+    "LastName": "Morales",
+    "Guid": "a3a5cc1c-e602-4173-8045-40490168ac58",
+    "Email": "loki",
+    "PhoneNumber": "09887665",
+    "Address": "väg 45"
+  }
+]
