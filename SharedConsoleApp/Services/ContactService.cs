@@ -10,8 +10,6 @@ namespace SharedConsoleApp.Services
     {
         private readonly IFileService _fileService = new FileService();
         private static readonly List<IContact> _contacts = new List<IContact>();
-
-
         private readonly string _filePath = @"C:\Users\User\source\repos\SharedConsoleApp\AddressBookConsoleApp\contacts.json";
 
 
