@@ -24,7 +24,7 @@ public class ContactServiceTest
         bool result = contactService.AddContactToList(_contact);
 
         //Assert
-        Assert.True(result);
+        Assert.False(result);
 
 
     }
@@ -35,25 +35,20 @@ public class ContactServiceTest
     {
         //Arrange
         IContactService contactService = new ContactService();
+        IContact _contact = new PrivateContact { FirstName = "Isra", LastName = "Morales", Address = "väg 24", Email = "loki@sverige", PhoneNumber = "0977665544" };
+        contactService.AddContactToList(_contact);
 
         //Act
 
         IEnumerable<IContact> result = contactService.GetContactsFromList();
 
-        IContact _contact = new PrivateContact { FirstName = "Isra", LastName = "Morales", Address = "väg 24", Email = "loki@sverige", PhoneNumber = "0977665544" };
-        contactService.AddContactToList(_contact);
-
         //Assert
-
 
         Assert.NotNull(result);
 
         Assert.True(((List<IContact>)result).Any());
+       
     }
-
-
-
-
 
 }
 

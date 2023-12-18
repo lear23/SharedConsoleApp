@@ -1,11 +1,18 @@
 [
   {
     "$type": "SharedConsoleApp.Models.PrivateContact, SharedConsoleApp",
-    "FirstName": "Isra",
+    "FirstName": "Israel",
     "LastName": "Morales",
-    "Guid": "a19c1db5-8cb3-45bc-88a1-706f11ffe85b",
-    "Email": "loki@sverige",
-    "PhoneNumber": "0977665544",
-    "Address": "väg 24"
+    "Email": "loki",
+    "PhoneNumber": "0987654",
+    "Address": "väg 89"
+  },
+  {
+    "$type": "SharedConsoleApp.Models.PrivateContact, SharedConsoleApp",
+    "FirstName": "Elsa",
+    "LastName": "Karlsson",
+    "Email": "elsa",
+    "PhoneNumber": "8373283829",
+    "Address": "väg34"
   }
 ]

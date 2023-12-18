@@ -24,8 +24,9 @@ namespace SharedConsoleApp.Services
                     string json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Objects, Formatting = Formatting.Indented });
 
                     var result = _fileService.SaveContentToFile(_filePath, json);
-                    //return result;
-                    return true;
+                    return result;
+
+
                 }
             }
             catch (Exception ex)
@@ -131,11 +132,7 @@ namespace SharedConsoleApp.Services
                     string json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.None});
 
                     var result = _fileService.SaveContentToFile(_filePath, json);
-                    return result;
-
-                    
-
-
+                    return result;                   
                 }
             }
             catch (Exception ex)
