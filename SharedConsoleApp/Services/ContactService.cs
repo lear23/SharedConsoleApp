@@ -9,6 +9,12 @@ namespace SharedConsoleApp.Services
     public class ContactService : IContactService
     {
         private readonly IFileService _fileService = new FileService();
+
+        //public ContactService(IFileService fileService)
+        //{
+        //    _fileService = fileService;
+        //}
+
         private static readonly List<IContact> _contacts = new List<IContact>();
         private readonly string _filePath = @"C:\Users\User\source\repos\SharedConsoleApp\AddressBookConsoleApp\contacts.json";
 
@@ -21,7 +27,7 @@ namespace SharedConsoleApp.Services
                 {
                     _contacts.Add(contact);
 
-                    string json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Objects, Formatting = Formatting.Indented });
+                    var json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Objects, Formatting = Formatting.Indented });
 
                     var result = _fileService.SaveContentToFile(_filePath, json);
                     return result;

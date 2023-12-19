@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-
+﻿
 using SharedConsoleApp.Interfaces;
 using SharedConsoleApp.Models;
 using SharedConsoleApp.Services;

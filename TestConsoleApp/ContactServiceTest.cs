@@ -1,5 +1,5 @@
 ﻿
-using Newtonsoft.Json;
+
 using SharedConsoleApp.Interfaces;
 using SharedConsoleApp.Models;
 using SharedConsoleApp.Services;
