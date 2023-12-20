@@ -11,7 +11,12 @@
              
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
-    <Grid>
+    <Grid  Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
         <StackPanel>
             <Label Content="List Of Contacts"/>
             <Button Content="Navigate to Add" Command="{Binding NavigateToAddCommand}"/>

@@ -10,11 +10,33 @@
              
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
-    <Grid>
-       
-        <StackPanel>
-            <Label Content="Add New Contact"/>
-            <Button Content="Navigate To Contact List" Command="{Binding NavigateToListCommand}"/>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "auto" />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height = "*" />
+        </Grid.RowDefinitions >
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,5">
+            <Label Content = "Add New Contact" />
+            <Button Content="Navigate To List Contact" Command="{Binding NavigateToListCommand}"/>
         </StackPanel>
+        
+        <StackPanel Grid.Row="1">
+            <Label Content = "First Name" FontSize= "10" />
+            <TextBox Text= "{Binding CustomerForm.contactPerson.FirstName}" />
+            <Label Content= "Last Name" FontSize= "10" />
+            <TextBox Text= "{Binding CustomerForm.contactPerson.LastName}" />
+            <Label Content= "Addres" FontSize= "10" />
+            <TextBox Text= "{Binding CustomerForm.Address}" />
+            <Label Content= "Phone Number" FontSize= "10" />
+            <TextBox Text= "{Binding CustomerForm.contactPerson.Phone}" />
+            <Label Content= "Email" FontSize= "10" />
+            <TextBox Text= "{Binding CustomerForm.Email}" />
+
+            <Button Content= "Add Contact" Command= "{Binding AddCostumerToListCommand}" Margin= "0,15,0,15" Padding= "10" />
+
+        </StackPanel >
+
     </Grid>
 </UserControl>
