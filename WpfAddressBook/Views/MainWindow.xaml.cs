@@ -3,7 +3,7 @@ using System.Windows;
 using WpfAddressBook.ViewModels;
 
 
-namespace WpfAddressBook.Views;
+namespace WpfAddressBook;
 
 public partial class MainWindow : Window
 {

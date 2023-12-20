@@ -12,31 +12,38 @@ namespace WpfAddressBook
    
     public partial class App : Application
     {
-        private IHost? _host;
+        private IHost? _host {  get; set; }
 
         public App()
         {
             _host = Host.CreateDefaultBuilder().ConfigureServices(services =>
             {
-                services.AddSingleton<ContactService>();
-                services.AddSingleton<MainWindow>();
+                services.AddTransient<ContactService>();               
+              
+                services.AddTransient<ContactListViewModel>();
+                services.AddTransient<ContactListView>();
+
+                services.AddTransient<ContactAddViewModel>(); 
+                services.AddTransient<ContactAddView>();
+
+                services.AddTransient<ContactEditViewModel>();
+                services.AddTransient<ContactEditView>();
+
                 services.AddSingleton<MainViewModel>();
-                services.AddSingleton<ContactListViewModel>();
-                services.AddSingleton<ContactListView>();
-                services.AddSingleton<ContactAddViewModel>(); 
-                services.AddSingleton<ContactAddView>(); 
+                services.AddSingleton<MainWindow>();
 
             }).Build();
 
 
         }
 
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
-           _host!.Start();
+            await _host!.StartAsync();
             var mainWindow = _host!.Services.GetRequiredService<MainWindow>();
-
             mainWindow.Show();
+
+            base.OnStartup(e);
         }
     }
 

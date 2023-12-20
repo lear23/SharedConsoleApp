@@ -10,7 +10,8 @@ namespace WpfAddressBook.ViewModels;
  public partial class ContactAddViewModel : ObservableObject
 
 {
-    [ObservableProperty]
+
+     [ObservableProperty]
     private PrivateContact _contact = new();
    
 

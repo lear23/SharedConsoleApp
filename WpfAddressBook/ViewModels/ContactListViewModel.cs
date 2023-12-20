@@ -12,12 +12,22 @@ namespace WpfAddressBook.ViewModels;
 public partial class ContactListViewModel : ObservableObject
 {
 
+
+
+    [ObservableProperty]
+    private ObservableObject? _currentViewModel;
+
     private readonly IServiceProvider _sp;
 
     public ContactListViewModel(IServiceProvider sp)
     {
         _sp = sp;
     }
+
+    [ObservableProperty]
+
+    private ObservableCollection<PrivateContact> privateContacts = [];
+
 
     [RelayCommand]
     private void NavigateToAdd()
@@ -27,11 +37,6 @@ public partial class ContactListViewModel : ObservableObject
         mainViewModel.CurrentViewModel = _sp.GetRequiredService<ContactAddViewModel>();
     }
 
-
-
-    [ObservableProperty]
-
-    private ObservableCollection<PrivateContact> privateContacts = [];
 
     [RelayCommand]
 
@@ -44,7 +49,7 @@ public partial class ContactListViewModel : ObservableObject
     
     [RelayCommand]
 
-    private void Delete(PrivateContact contact)
+    private void Remove(PrivateContact contact)
     {
 
     }
