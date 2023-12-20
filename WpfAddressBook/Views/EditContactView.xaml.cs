@@ -4,10 +4,10 @@ using System.Windows.Controls;
 
 namespace WpfAddressBook.Views
 {
-   
-    public partial class ContactListView : UserControl
+
+    public partial class EditContactView : UserControl
     {
-        public ContactListView()
+        public EditContactView()
         {
             InitializeComponent();
         }

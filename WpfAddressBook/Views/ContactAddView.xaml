@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfAddressBook.Views"
+             
              xmlns:viewmodels="clr-namespace:WpfAddressBook.ViewModels"
              xmlns:models="clr-namespace:SharedConsoleApp.Models;assembly=SharedConsoleApp"
              d:DataContext="{d:DesignInstance Type=viewmodels:ContactAddViewModel}"
@@ -21,20 +22,20 @@
             <Label Content = "Add New Contact" />
             <Button Content="Navigate To List Contact" Command="{Binding NavigateToListCommand}"/>
         </StackPanel>
-        
-        <StackPanel Grid.Row="1">
-            <Label Content = "First Name" FontSize= "10" />
-            <TextBox Text= "{Binding CustomerForm.contactPerson.FirstName}" />
-            <Label Content= "Last Name" FontSize= "10" />
-            <TextBox Text= "{Binding CustomerForm.contactPerson.LastName}" />
-            <Label Content= "Addres" FontSize= "10" />
-            <TextBox Text= "{Binding CustomerForm.Address}" />
-            <Label Content= "Phone Number" FontSize= "10" />
-            <TextBox Text= "{Binding CustomerForm.contactPerson.Phone}" />
-            <Label Content= "Email" FontSize= "10" />
-            <TextBox Text= "{Binding CustomerForm.Email}" />
 
-            <Button Content= "Add Contact" Command= "{Binding AddCostumerToListCommand}" Margin= "0,15,0,15" Padding= "10" />
+        <StackPanel Grid.Row="1" >
+            <Label Content = "First Name" FontSize= "10" />
+            <TextBox Text= "{Binding Contact.FirstName }" />
+            <Label Content= "Last Name" FontSize= "10" />
+            <TextBox Text= "{Binding Contact.LastName}" />
+            <Label Content= "Addres" FontSize= "10" />
+            <TextBox Text= "{Binding Contact.Address}" />
+            <Label Content= "Phone Number" FontSize= "10" />
+            <TextBox Text= "{Binding Contact.PhoneNumber}" />
+            <Label Content= "Email" FontSize= "10" />
+            <TextBox Text= "{Binding Contact.Email}" />
+
+            <Button Content= "Add Contact"  Margin= "0,15,0,15" Padding= "10" />
 
         </StackPanel >
 
