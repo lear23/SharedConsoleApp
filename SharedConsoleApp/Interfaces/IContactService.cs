@@ -8,7 +8,7 @@ namespace SharedConsoleApp.Interfaces
         IEnumerable<IContact> GetContactsFromList();
         IContact GetContactFromList(string email);
         bool UpdateContact(IContact existingContact, IContact updatedContact);
-        bool DeleteContact(string email);
+        bool DeleteContact(object contactOrEmaill);
         bool ContactExists(object email);
     }
 }

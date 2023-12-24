@@ -1,6 +1,7 @@
 ﻿
 using Newtonsoft.Json;
 using SharedConsoleApp.Interfaces;
+using SharedConsoleApp.Models;
 using System.Diagnostics;
 
 
@@ -10,17 +11,15 @@ namespace SharedConsoleApp.Services
     {
         private readonly IFileService _fileService = new FileService();
 
-        //public ContactService(IFileService fileService)
-        //{
-        //    _fileService = fileService;
-        //}
 
         private static readonly List<IContact> _contacts = new List<IContact>();
-        private readonly string _filePath = @"C:\Users\User\source\repos\SharedConsoleApp\AddressBookConsoleApp\contacts.json";
-
+        private readonly string _filePath = @"C:\Users\User\source\repos\SharedConsoleApp\contacts.json";
+        public PrivateContact CurrentItem { get; set; } = null!;
+        
 
         public bool AddContactToList(IContact contact)
         {
+
             try
             {
                 if (!_contacts.Any(x => x.Email == contact.Email))
@@ -47,8 +46,6 @@ namespace SharedConsoleApp.Services
         public bool ContactExists(object email)
         {
             return _contacts.Any(contact => contact.Email == email);
-
-
             
         }
 
@@ -78,7 +75,7 @@ namespace SharedConsoleApp.Services
 
                 if (!string.IsNullOrEmpty(content))
                 {
-                    var newContacts = JsonConvert.DeserializeObject<List<IContact>>(content, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All }) ?? new List<IContact>();
+                    var newContacts = JsonConvert.DeserializeObject<List<IContact>>(content, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All }) ?? [];
 
                     return newContacts;
                 }
@@ -88,22 +85,42 @@ namespace SharedConsoleApp.Services
                 Debug.WriteLine("ContactService-GetContactsFromFile:: " + ex.Message);
             }
 
-            return new List<IContact>();
+            return _contacts;
         }
 
-        public bool DeleteContact(string email)
+
+
+        public bool DeleteContact(object contactOrEmail)
         {
             try
             {
-                var contact = _contacts.FirstOrDefault(x => x.Email == email);
+                PrivateContact contactToDelete = null!;
 
-                if (contact == null)
+                if (contactOrEmail is PrivateContact)
                 {
-                    Debug.WriteLine("Contact not found.");
-                    return false; // Indicate contact not found
+                
+                    contactToDelete = (PrivateContact)contactOrEmail;
+                }
+                else if (contactOrEmail is string)
+                {
+                    
+                    var email = (string)contactOrEmail;
+                    contactToDelete = (PrivateContact?)_contacts.FirstOrDefault(x => x.Email == email)!;
+                }
+                else
+                {
+                   
+                    Debug.WriteLine("Unsupported type for contactOrEmail.");
+                    return false;
                 }
 
-                _contacts.Remove(contact);
+                if (contactToDelete == null)
+                {
+                    Debug.WriteLine("Contact not found.");
+                    return false;
+                }
+
+                _contacts.Remove(contactToDelete);
 
                 string json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Objects });
 
@@ -112,8 +129,7 @@ namespace SharedConsoleApp.Services
                 if (!result)
                 {
                     Debug.WriteLine("Error saving contacts to file.");
-                   
-                    _contacts.Add(contact);
+                    _contacts.Add(contactToDelete);
                 }
 
                 return true;
@@ -125,6 +141,9 @@ namespace SharedConsoleApp.Services
             }
         }
 
+      
+
+
 
         public bool UpdateContact(IContact existingContact, IContact updatedContact)
         {
@@ -135,10 +154,10 @@ namespace SharedConsoleApp.Services
                     _contacts.Remove(existingContact);
                     _contacts.Add(updatedContact);
 
-                    string json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.None});
+                    string json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.None });
 
                     var result = _fileService.SaveContentToFile(_filePath, json);
-                    return result;                   
+                    return result;
                 }
             }
             catch (Exception ex)
@@ -148,7 +167,6 @@ namespace SharedConsoleApp.Services
             return false;
         }
 
-       
     }
 }
 

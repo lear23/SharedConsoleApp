@@ -11,7 +11,7 @@
              
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
-    <Grid>
+    <Grid Margin="20">
 
         <Grid.RowDefinitions>
             <RowDefinition Height = "auto" />
@@ -19,10 +19,7 @@
             <RowDefinition Height = "*" />
         </Grid.RowDefinitions >
 
-        <!--<StackPanel Grid.Row="0" Margin="0,0,0,5">
-            <Label Content = "Add New Contact" />
-            <Button Content="Navigate To List Contact" Command="{Binding }"/>
-        </StackPanel>-->
+     
 
         <StackPanel Grid.Row="1" >
             <Label Content = "First Name" FontSize= "10" />

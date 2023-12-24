@@ -18,7 +18,7 @@ namespace WpfAddressBook
         {
             _host = Host.CreateDefaultBuilder().ConfigureServices(services =>
             {
-                services.AddTransient<ContactService>();               
+                services.AddSingleton<ContactService>();               
               
                 services.AddTransient<ContactListViewModel>();
                 services.AddTransient<ContactListView>();

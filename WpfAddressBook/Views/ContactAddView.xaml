@@ -13,8 +13,7 @@
              d:DesignHeight="450" d:DesignWidth="300">
     <Grid Margin="20">
         <Grid.RowDefinitions>
-            <RowDefinition Height = "auto" />
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height = "auto" />        
             <RowDefinition Height = "*" />
         </Grid.RowDefinitions >       
         
